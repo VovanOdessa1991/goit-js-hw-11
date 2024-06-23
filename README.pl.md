@@ -1,103 +1,111 @@
-# Parcel template
+# Vanilla App Template
 
-Ten projekt został stworzony przy pomocy Parcel. W celu zapoznania się i
-skonfigurowania dodatkowych opcji [zobacz dokumentację](https://parceljs.org/)
+Ten projekt został zbudowany przy użyciu Vite. Aby zapoznać się i skonfigurować
+dodatkowe funkcje [zapoznaj się z dokumentacją](https://vitejs.dev/).
 
-## Przygotowanie nowego projektu
+## Tworzenie repozytorium za pomocą szablonu
+
+Użyj tego repozytorium GoIT jako szablonu, aby utworzyć repozytorium
+dla swojego projektu. By to zrobić, kliknij przycisk `«Use this template»` і
+wybierz opcję `«Create a new repository»`, jak pokazano na obrazku.
+
+![Creating repo from a template step 1](./assets/template-step-1.png)
+
+Na kolejnym etapie otworzy się strona tworzenia nowego repozytorium. Wypełnij
+pole nazwy, upewnij się, że repozytorium jest publiczne, a następnie kliknij
+przycisk `«Create repository from template»`.
+
+![Creating repo from a template step 2](./assets/template-step-2.png)
+
+Po utworzeniu repozytorium należy przejść do ustawień
+utworzonego repozytorium w zakładce `Settings` > `Actions` > `General`,
+jak pokazano na obrazku.
+
+![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+
+Przewiń do samego końca strony, w sekcji `«Workflow permissions»` wybierz
+opcję `«Read and write permissions»` i zaznacz pole wyboru. Jest to konieczne,
+aby zautomatyzować proces wdrażania projektu.
+
+![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+
+Teraz masz osobiste repozytorium projektu ze strukturą plików i folderów
+repozytorium wzorcowego. Pracuj z nim tak, jak z każdym innym osobistym
+repozytorium: klonuj je na swój komputer, pisz kod, dokonuj zatwierdzeń i
+przesyłaj je do GitHub.
+
+## Przygotowanie do pracy
 
 1. Upewnij się, że na komputerze zainstalowana jest wersja LTS Node.js.
-   [Ściągnij i zainstaluj](https://nodejs.org/en/), jeśli jest taka potrzeba.
-2. Sklonuj to repozytorium.
-3. Zmień nazwę folderu z `parcel-project-template` na nazwę swojego projektu.
-4. Utwórz nowe, puste repozytorium na GitHub.
-5. Otwórz projekt w VSCode, uruchom terminal i zwiąż projekt z repozytorium
-   GitHub
-   [zgodnie z instrukcją](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#changing-a-remote-repositorys-url).
-6. Utwórz zależność projektu w terminalu przez polecenie `npm install` .
-7. Włącz tryb edycji, wykonując polecenie `npm start`.
-8. Przejdź w przeglądarce pod adres
-   [http://localhost:1234](http://localhost:1234). Ta strona będzie się
-   automatycznie odświeżać po dokonaniu zmian w plikach projektu.
+   [W razie potrzeby pobierz ją i zainstaluj](https://nodejs.org/en/).
+2. Zainstaluj podstawowe zależności projektu w terminalu za pomocą polecenia `npm install`.
+3. Uruchom tryb deweloperski, uruchamiając polecenie `npm run dev`.
+4. Wejdź na stronę [http://localhost:5173](http://localhost:5173) w przeglądarce. Strona
+   ta zostanie automatycznie przeładowana po zapisaniu zmian w plikach projektu.
 
 ## Pliki i foldery
 
-- Wszystkie partiale plików stylów powinny znajdować się w folderze `src/sass` i
-  importować się w pliki stylów stron. Na przykład dla `index.html` plik stylów
-  nazywa się `index.scss`.
-- Obrazy dodawaj do pliku `src/images`. Moduł zbierający optymalizuje je, ale
-  tylko przy deploymencie wersji produkcyjnej projektu. Wszystko to zachodzi w
-  chmurze, aby nie obciążać twojego komputera, ponieważ na słabszym sprzęcie
-  może to zająć sporo czasu.
+- Pliki znaczników dla komponentów strony powinny być umieszczone w folderze `src/partials` i
+  zaimportowane do pliku `index.html`. Na przykład, plik ze znacznikami nagłówka
+  `header.html` należy utworzyć w folderze `partials` i zaimportować do `index.html`.
+- Pliki stylów powinny być umieszczone w folderze `src/css` i zaimportowane do plików HTML
+  stron. Na przykład, dla `index.html` plik stylów nazywa się `index.css`.
+- Obrazy należy dodawać do folderu `src/img`. Konstruktor zoptymalizuje je, ale dopiero po 
+  wdrożeniu produkcyjnej wersji projektu. Wszystko to dzieje się w chmurze, aby nie
+  obciążać Twojego komputera, ponieważ na słabych komputerach może to zająć dużo czasu.
 
-## Deployment
+## Wdrożenie
 
-Aby skonfigurować deployment projektu należy wykonać kilka dodatkowych kroków
-konfigurowania twojego repozytorium. Wejdź w zakładkę `Settings` i w podsekcji
-`Actions` wybierz punkt `General`.
-
-![GitHub actions settings](./assets/actions-config-step-1.png)
-
-Przejdź do ostatniej sekcji, w której upewnij się, że wybrane opcje są takie
-same jak na następnym obrazku i kliknij `Save`. Bez tych ustawień w module
-zbierającym będzie zbyt mało pozwoleń dla automatyzacji procesu deploymentu.
-
-![GitHub actions settings](./assets/actions-config-step-2.png)
-
-Wersja produkcyjna projektu będzie automatycznie gromadzić się i deployować na
-GitHub Pages w gałęzi `gh-pages` za każdym razem, gdy aktualizuje się gałąź
-`main`. Na przykład po bezpośrednim pushu lub przyjętym pull requeście. W tym
-celu niezbędne jest, aby w pliku `package.json` wyedytować pole `homepage` i
-skrypt `build`, zamieniając `your_username` i `your_repo_name` na swoje nazwy i
-wysłać zmiany na GitHub.
+Wersja produkcyjna projektu zostanie automatycznie zbudowana i wdrożona na GitHub
+Pages, w gałęzi `gh-pages`, za każdym razem, gdy gałąź `main` zostanie zaktualizowana.
+Na przykład po bezpośrednim przesłaniu lub zaakceptowaniu pull request. Aby to zrobić, 
+należy w pliku `package.json` zmienić wartość flagi `--base=/<REPO>/`, dla polecenia `build`,
+zastępując `<REPO>` nazwą repozytorium i wysłać zmiany do GitHub.
 
 ```json
-"homepage": "https://your_username.github.io/your_repo_name/",
-"scripts": {
-  "build": "parcel build src/*.html --public-url /your_repo_name/"
-},
+"build": "vite build --base=/<REPO>/",
 ```
 
-Dalej należy wejść w ustawienia repozytorium GitHub (`Settings` > `Pages`) i
-wystawić dystrybucję wersji produkcyjnej z folderu `/root` gałęzi `gh-pages`,
-jeśli nie zrobiło się to automatycznie.
+Następnie należy przejść do ustawień repozytorium GitHub (`Settings` > `Pages`) i
+i ustawić dystrybucję wersji produkcyjnej plików z folderu `/root` gałęzi `gh-pages`,
+jeśli nie zostało to zrobione automatycznie.
 
 ![GitHub Pages settings](./assets/repo-settings.png)
 
-### Status deploymentu
+### Status wdrożenia
 
-Status deploymentu ostatniego commitu wyświetla się na ikonie obok jego
-identyfikatora.
+Status wdrożenia ostatniego zatwierdzenia jest wyświetlany za pomocą ikony obok jego identyfikatora.
 
-- ** Żółty kolor** - wykonuje się zbudowanie i deployment projektu.
-- ** Zielony kolor** - deployment zakończył się sukcesem.
-- ** Czerwony kolor** - w czasie lintingu, budowania lub deplymentu pojawił się
-  błąd.
+- **Żółty** - projekt jest budowany i wdrażany.
+- **Zielony** - wdrożenie zakończyło się pomyślnie.
+- **Czerwony** - wystąpił błąd podczas lintingu, budowania lub wdrażania.
 
-Więcej informacji o statusie można zobaczyć klikając na ikonkę i w wyskakującym
-oknie przejść do odnośnika `Details`.
+Bardziej szczegółowe informacje na temat statusu można wyświetlić, klikając ikonę, 
+a następnie link `Details` znajdujący się w rozwijanym oknie.
 
-![Deployment status](./assets/status.png)
+![Deployment status](./assets/deploy-status.png)
 
-### Działająca strona
+### Strona na żywo
 
-Po jakimś czasie, zazwyczaj kilku minut, działającą stronę będzie można zobaczyć
-pod adresem wskazanym w wyedytowanej właściwości `homepage`. Na przykład tu
-znajduje się odnośnik do działającej strony dla tego repozytorium
-[https://goitacademy.github.io/parcel-project-template](https://goitacademy.github.io/parcel-project-template).
+Po pewnym czasie, zwykle kilku minutach, strona na żywo może być wyświetlona
+pod adresem określonym w zakładce `Settings` > `Pages` w ustawieniach repozytorium. 
+Na przykład, oto link do wersji live dla tego repozytorium:
 
-Jeżeli otwiera się pusta strona, upewnij się, że w zakładce `Console` nie ma
-błędów związanych z nieprawidłowymi ścieżkami do plików projektu CSS i JS
-(**404**). Najprawdopodobniej wprowadzona została nieprawidłowa wartość
-właściwości `homepage` lub skryptu `build` w pliku `package.json`.
+[https://goitacademy.github.io/vanilla-app-template/](https://goitacademy.github.io/vanilla-app-template/).
+
+Jeśli widzisz pustą stronę, upewnij się, że w zakładce `Console` nie ma
+błędów związanych z nieprawidłowymi ścieżkami do plików CSS i JS projektu
+(**404**). Najprawdopodobniej masz nieprawidłową wartość flagi `--base`
+dla polecenia `build` w pliku `package.json`.
 
 ## Jak to działa
 
 ![How it works](./assets/how-it-works.png)
 
-1. Po każdym pushu w gałęzi `main` repozytorium GitHub, włącza się specjalny
-   skrypt (GitHub Action) z pliku `.github/workflows/deploy.yml`.
-2. Wszystkie pliki repozytorium kopiują się na serwer, gdzie projekt
-   inicjalizuje się i buduje przed deploymentem.
-3. Jeżeli wszystkie kroki zakończyły się sukcesem, zbudowana wersja produkcyjna
-   plików projektu wysyła się w gałąź `gh-pages`. W przeciwnym razie, w logu
-   wykonania skryptu wskazane zostanie, w czym jest problem.
+1. Po każdym wysłaniu do gałęzi `main` repozytorium GitHub, uruchamiany jest
+   specjalny skrypt (GitHub Action) z pliku `.github/workflows/deploy.yml`.
+2. Wszystkie pliki repozytorium są kopiowane na serwer, gdzie projekt jest
+   inicjalizowany, przechodzi linting i budowanie przed wdrożeniem.
+3. Jeśli wszystkie kroki zakończą się powodzeniem, zmontowana wersja produkcyjna
+   plików projektu zostanie wysłana do gałęzi `gh-pages`. W przeciwnym razie
+   w logu wykonania skryptu pojawi się informacja o problemie.
