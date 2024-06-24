@@ -13,7 +13,7 @@ export function getAllBooks() {
   //   const END_POINT = '/books';
   const url = `${BASE_URL}${USERkEY}`;
 
-  const params = {};
+  const params = '&image_type=photo&orientation=horizontal';
   const headers = {};
 
   return fetch(url).then(res => res.json());
