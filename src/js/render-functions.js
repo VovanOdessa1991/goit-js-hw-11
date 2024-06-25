@@ -38,13 +38,15 @@ export function render(img, likes, vievs, comments, downloads) {
 }
 export function clearCiild(perents) {
   // const myNode = document.getElementById(`${perents}`);
-  while (perents.firstChild) {
-    perents.removeChild(perents.lastChild);
-  }
+  perents.innerHTML = '';
+  // while (perents.firstChild) {
+  //   perents.removeChild(perents.lastChild);
+  // }
 }
 
 export function print(objeckt, img, likes, vievs, comments, downloads) {
   const list = render(img, likes, vievs, comments, downloads);
+
   objeckt.insertAdjacentHTML('afterbegin', list);
   // refs.galery.i;
 }
