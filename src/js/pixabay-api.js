@@ -1,23 +1,57 @@
+import Axios from 'axios';
+
+// axios.defaults.baseURL = '';
+
 const BASE_URL = 'https://pixabay.com/api/';
 const USERkEY = '?key=44446882-f589529ab68d1d31e6487214d';
 
-export function getAllBooks(param) {
-  const END_POINT = `&q=${param}&min_width=2450`;
-  const params = '&image_type=photo&orientation=horizontal&safesearch=true';
+const axios = Axios.create({
+  baseURL: 'https://pixabay.com/api/',
+  headers: {},
+  params: {
+    key: '44446882-f589529ab68d1d31e6487214d',
+  },
+});
+export async function getAllBooks(param, page = '1', pages = 15) {
+  const par = {
+    param: param,
+    page: page,
+    pages: pages,
+  };
 
-  const url = `${BASE_URL}${USERkEY}${END_POINT}${params}`;
+  // const res = await axios.get('');
+  try {
+    const res = await axios.get('', par);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
 
-  const headers = {};
+  // !Перевірка Аксіоса(про всяк випадок)
+  // .then(function (response) {
+  // console.log(response.data.hits);
+  // console.log(response.status);
+  // console.log(response.statusText);
+  // console.log(response.headers);
+  // console.log(response.config);
+  // })
 
-  const promiseIMG = fetch(url);
+  // ! Старий метод (про всяк випадок)
+  // const END_POINT = `&q=${param}&min_width=2450`;
+  // const params = `&image_type=photo&orientation=horizontal&safesearch=true&per_page=${pages}&page=${page}`;
 
-  return promiseIMG
-    .then(data => data.json())
+  // const url = `${BASE_URL}${USERkEY}${END_POINT}${params}`;
 
-    .catch(() => {
-      console.log('Error');
-    });
-  console.log(url);
+  // const headers = {};
+
+  // const promiseIMG = fetch(url);
+
+  // return promiseIMG
+  //   .then(data => data.json())
+
+  //   .catch(() => {
+  //     console.log('Error');
+  //   });
 }
 
 //  ПРимер! Извлечение фотографий «желтых цветов». Поисковый запросддолжен быть закодирован в URL:
